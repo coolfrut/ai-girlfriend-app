@@ -35,3 +35,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 .vercel
+
+# MCP Interceptor with tokens
+scripts/mcpInterceptor.mjs
