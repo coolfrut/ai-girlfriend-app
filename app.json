@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "AI Girlfriend",
+    "slug": "ai-gf2",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "myapp",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0F0E0F"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.slot.slotsmachines.lucky.casino"
+    },
+    "android": {
+      "package": "app.ai.girlfriend"
+    },
+    "web": {
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://rork.com/"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": "https://rork.com/"
+      },
+      "eas": {
+        "projectId": "0fcc0ccf-0045-4440-8def-4ced36dc9791"
+      }
+    }
+  }
+}
