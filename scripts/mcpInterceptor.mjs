@@ -19,6 +19,7 @@ const CHANNEL = process.argv[2] || 's1wpbs9l';
 const FIGMA_TOKEN = process.env.FIGMA_TOKEN;
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
 
+
 // Трекинг запросов export_node_as_image
 const pendingExports = new Map();
 

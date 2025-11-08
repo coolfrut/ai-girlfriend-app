@@ -26,10 +26,17 @@ const iconSources = {
 };
 
 export default function Icon({ name, size = 24, style }: IconProps) {
+  const flatStyle = style ? (Array.isArray(style) ? Object.assign({}, ...style) : style) : {};
+  const tintColor = flatStyle.tintColor;
+  
   return (
     <Image
       source={iconSources[name]}
-      style={[{ width: size, height: size }, style]}
+      style={[
+        { width: size, height: size },
+        tintColor && { tintColor },
+        style
+      ]}
       resizeMode="contain"
     />
   );

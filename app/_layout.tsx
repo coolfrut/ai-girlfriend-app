@@ -76,12 +76,12 @@ export default function RootLayout() {
           <Stack.Screen 
             name="onboarding/final" 
             options={{ 
-              headerShown: false,
+        headerShown: false,
               animation: 'slide_from_right'
-            }} 
+      }}
           />
           <Stack.Screen name="+not-found" />
-        </Stack>
+    </Stack>
         <StatusBar style="light" />
       </ThemeProvider>
     </OnboardingProvider>
