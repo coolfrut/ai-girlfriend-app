@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 import ChatNavBar from '@/components/ChatNavBar';
 import MessageBubble from '@/components/MessageBubble';
 import VideoMessage from '@/components/VideoMessage';
@@ -11,6 +12,7 @@ import MessageInput from '@/components/MessageInput';
 
 export default function ChatScreen() {
   const scrollViewRef = useRef<ScrollView>(null);
+  const router = useRouter();
 
   const chatData = {
     name: 'Barbara',
@@ -27,6 +29,7 @@ export default function ChatScreen() {
         status={chatData.status}
         avatar={chatData.avatar}
         onCallPress={() => console.log('Call pressed')}
+        onBackPress={() => router.back()}
       />
 
       <ScrollView

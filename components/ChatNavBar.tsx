@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ImageSourcePropType } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ChevronLeft } from 'lucide-react-native';
 import Icon from './Icon';
 import CallModal from './CallModal';
 
@@ -9,9 +10,10 @@ interface ChatNavBarProps {
   status: string;
   avatar: ImageSourcePropType;
   onCallPress?: () => void;
+  onBackPress?: () => void;
 }
 
-export default function ChatNavBar({ name, status, avatar, onCallPress }: ChatNavBarProps) {
+export default function ChatNavBar({ name, status, avatar, onCallPress, onBackPress }: ChatNavBarProps) {
   const [showCallModal, setShowCallModal] = useState(false);
   const [isListening, setIsListening] = useState(false);
 
@@ -30,6 +32,9 @@ export default function ChatNavBar({ name, status, avatar, onCallPress }: ChatNa
     <>
       <View style={styles.container}>
         <View style={styles.leftSection}>
+          <TouchableOpacity onPress={onBackPress} style={styles.backButton}>
+            <ChevronLeft size={24} color="#ffffff" />
+          </TouchableOpacity>
           <View style={styles.userInfo}>
             <View style={styles.avatarContainer}>
               <Image source={avatar} style={styles.avatar} resizeMode="cover" />
@@ -82,6 +87,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+  },
+  backButton: {
+    marginRight: 8,
+    padding: 4,
   },
   userInfo: {
     flexDirection: 'row',

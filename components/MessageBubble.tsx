@@ -1,19 +1,28 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { Check } from 'lucide-react-native';
 
 interface MessageBubbleProps {
   message: string;
   time: string;
   isFromAI: boolean;
+  showCheckmark?: boolean;
 }
 
-export default function MessageBubble({ message, time, isFromAI }: MessageBubbleProps) {
+export default function MessageBubble({ message, time, isFromAI, showCheckmark = false }: MessageBubbleProps) {
   if (!isFromAI) {
     return (
       <View style={styles.userMessageContainer}>
         <View style={styles.userBubble}>
           <Text style={styles.messageText}>{message}</Text>
-          <Text style={styles.timeText}>{time}</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.timeText}>{time}</Text>
+            {showCheckmark && (
+              <View style={styles.checkmark}>
+                <Check size={12} color="rgba(255, 255, 255, 0.5)" strokeWidth={2} />
+              </View>
+            )}
+          </View>
         </View>
       </View>
     );
@@ -24,7 +33,14 @@ export default function MessageBubble({ message, time, isFromAI }: MessageBubble
       <View style={styles.aiBubble}>
         <View style={styles.bubbleContent}>
           <Text style={styles.messageText}>{message}</Text>
-          <Text style={styles.timeText}>{time}</Text>
+          <View style={styles.timeContainer}>
+            <Text style={styles.timeText}>{time}</Text>
+            {showCheckmark && (
+              <View style={styles.checkmark}>
+                <Check size={12} color="rgba(255, 255, 255, 0.5)" strokeWidth={2} />
+              </View>
+            )}
+          </View>
         </View>
       </View>
 
@@ -59,13 +75,22 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     lineHeight: 18,
   },
+  timeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+    gap: 4,
+    marginTop: 4,
+  },
   timeText: {
     color: 'rgba(255, 255, 255, 0.5)',
     fontSize: 10,
     fontFamily: 'Poppins-Medium',
     fontWeight: '500',
-    alignSelf: 'flex-end',
-    marginTop: 4,
+  },
+  checkmark: {
+    width: 12,
+    height: 12,
   },
   aiIcon: {
     width: 32,

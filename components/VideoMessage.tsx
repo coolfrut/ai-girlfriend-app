@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { BlurView } from 'expo-blur';
 import { Play } from 'lucide-react-native';
 
 interface VideoMessageProps {
@@ -15,11 +16,9 @@ export default function VideoMessage({ image, time, duration = 'Video', onPress 
       <TouchableOpacity style={styles.videoContainer} onPress={onPress} activeOpacity={0.8}>
         <Image source={image} style={styles.videoImage} resizeMode="cover" />
         
-        <View style={styles.overlay}>
-          <View style={styles.playButton}>
-            <Play size={24} color="#ffffff" fill="#ffffff" />
-          </View>
-        </View>
+        <BlurView intensity={25} tint="dark" style={styles.blur}>
+          <View style={styles.blurOverlay} />
+        </BlurView>
 
         <View style={styles.durationBadge}>
           <Text style={styles.durationText}>{duration}</Text>
@@ -44,24 +43,19 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     position: 'relative',
+    borderWidth: 1,
+    borderColor: '#f03bbd',
   },
   videoImage: {
     width: '100%',
     height: '100%',
   },
-  overlay: {
+  blur: {
     ...StyleSheet.absoluteFillObject,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
-  playButton: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    alignItems: 'center',
-    justifyContent: 'center',
+  blurOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.04)',
   },
   durationBadge: {
     position: 'absolute',
